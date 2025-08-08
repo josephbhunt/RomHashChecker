@@ -19,6 +19,7 @@ If is is not found you will see an error message.
 ![Screenshot](images/hash_not_found.png)
 
 ## Instalation
+Download the binary from the [Releases page](https://github.com/josephbhunt/RomHashChecker/releases/download/v1.0.0/RomHashChecker.zip)
 1. Open Regedit.
 2. Go to: HKEY_CLASSES_ROOT\*\shell
 3. Right-click shell → New → Key: name it Compute MD5 Hash.
