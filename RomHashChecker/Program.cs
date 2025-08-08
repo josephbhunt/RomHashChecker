@@ -25,7 +25,13 @@ namespace RomHashChecker
 
             string nameFromHasheous = LookupHash(md5str);
 
-            MessageBox.Show($"Hasheous API result: {nameFromHasheous}");
+            MessageBox.Show(
+                $"MD5: {md5str}\n\nHasheous API result: {nameFromHasheous}",
+                "Hash Result",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1
+            );
         }
 
         private static string LookupHash(string md5str)
@@ -45,7 +51,6 @@ namespace RomHashChecker
                 }
                 else
                 {
-                    new Exception("Hasheous API result: 'name' property not found.");
                     return "Name property not found!";
                 }
             }
