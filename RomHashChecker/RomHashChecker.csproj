@@ -1,11 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
+	<Target Name="CopyToProgramFiles" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+		<PropertyGroup>
+			<ProgramFilesFolder>$(ProgramFiles)\RomHashChecker</ProgramFilesFolder>
+		</PropertyGroup>
+		<MakeDir Directories="$(ProgramFilesFolder)" />
+        <Copy  
+         SourceFiles="@(BuiltOutputPath)"  
+         DestinationFolder="$(ProgramFilesFolder)"  
+         OverwriteReadOnlyFiles="true" />
+	</Target>
+
+	<ItemGroup>
+		<BuiltOutputPath Include="$(OutputPath)RomHashChecker.exe" />
+		<BuiltOutputPath Include="$(OutputPath)RomHashChecker.dll" />
+		<BuiltOutputPath Include="$(OutputPath)RomHashChecker.deps.json" />
+		<BuiltOutputPath Include="$(OutputPath)RomHashChecker.runtimeconfig.json" />
+	</ItemGroup>
 </Project>
